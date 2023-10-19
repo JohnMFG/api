@@ -18,8 +18,8 @@ class ApiTest extends TestCase
         $this->httpClient = $this->getMockBuilder(Client::class)->getMock();
 
         // Create a mock for your database (if needed)
+        include 'MockDatabase.php';
         $this->mockDb = $this->getMockBuilder(MockDatabase::class)->getMock();
-        var_dump($this->mockDb);
     }
 
     public function testSaveUserWithValidData()
@@ -61,18 +61,11 @@ class ApiTest extends TestCase
         // Assertions for a successful request
         $this->assertEquals(200, $response->getStatusCode());
         $responseData = json_decode($response->getBody()->getContents(), true);
+        var_dump($responseData);
         $this->assertEquals(1, $responseData['status']);
     }
 
-    private function createMockResponse($statusCode, $data)
-    {
-        $response = new \GuzzleHttp\Psr7\Response(
-            $statusCode,
-            ['Content-Type' => 'application/json'],
-            json_encode($data)
-        );
-        return $response;
-    }
+
 
     public function testGetUserById()
     {
