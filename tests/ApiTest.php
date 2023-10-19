@@ -19,10 +19,12 @@ class ApiTest extends TestCase
 
         // Create a mock for your database (if needed)
         $this->mockDb = $this->getMockBuilder(MockDatabase::class)->getMock();
+        var_dump($this->mockDb);
     }
 
     public function testSaveUserWithValidData()
     {
+        // var_dump($this->mockDb);
         $this->mockDb->method('executeQuery')->willReturn([
             'status' => 1,
             'message' => 'Record created successfully.',
@@ -210,7 +212,7 @@ class ApiTest extends TestCase
     }
 }
 
-
+///////////////////////////////////////
 
 // use PHPUnit\Framework\TestCase;
 // use GuzzleHttp\Client;

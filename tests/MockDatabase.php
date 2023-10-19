@@ -1,5 +1,6 @@
 <?php
 class MockDatabase {
+    
     public function executeQuery($sql, $parameters = null) {
         // Implement your mock behavior here.
         // You can return predefined data or simulate database operations.
